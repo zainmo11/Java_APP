@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="681.0" prefWidth="923.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <BorderPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: offwhite; -fx-background-image: https://www.google.com/imgres?imgurl=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1619251173183-eccbb0f03cd2%3Fixlib%3Drb-4.0.3%26ixid%3DM3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8fA%253D%253D%26w%3D1000%26q%3D80&amp;tbnid=lAuq6qq4uL0t5M&amp;vet=12ahUKEwiX1PPk3Iv_AhV5picCHTf4CmAQMygEegUIARDKAQ..i&amp;imgrefurl=https%3A%2F%2Funsplash.com%2Fbackgrounds%2Fart%2Fsimple&amp;docid=ix0wKHBh1TwfaM&amp;w=1000&amp;h=1154&amp;q=simple%20background&amp;ved=2ahUKEwiX1PPk3Iv_AhV5picCHTf4CmAQMygEegUIARDKAQ;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <top>
+            <HBox fillHeight="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="92.0" prefWidth="923.0" style="-fx-background-color: #668800;" BorderPane.alignment="CENTER">
+               <children>
+                  <Group />
+                  <Button mnemonicParsing="false" text="import">
+                     <HBox.margin>
+                        <Insets left="8.0" right="8.0" top="35.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" text="Info">
+                     <HBox.margin>
+                        <Insets right="8.0" top="35.0" />
+                     </HBox.margin>
+                  </Button>
+                  <VBox prefHeight="92.0" prefWidth="135.0">
+                     <children>
+                        <Label alignment="CENTER" lineSpacing="2.0" prefHeight="44.0" prefWidth="142.0" text="ZAIN &amp; TOFY" textOverrun="WORD_ELLIPSIS" wrapText="true">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                           <textFill>
+                              <LinearGradient endX="1.0" endY="1.0">
+                                 <stops>
+                                    <Stop>
+                                       <color>
+                                          <Color red="0.5157894492149353" green="0.11270955204963684" blue="0.11270955204963684" />
+                                       </color>
+                                    </Stop>
+                                    <Stop offset="1.0">
+                                       <color>
+                                          <Color red="1.0" green="1.0" blue="1.0" />
+                                       </color>
+                                    </Stop>
+                                 </stops>
+                              </LinearGradient>
+                           </textFill>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="46.0" prefWidth="135.0" text="Simulink">
+                           <font>
+                              <Font size="21.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <HBox.margin>
+                        <Insets left="600.0" />
+                     </HBox.margin>
+                  </VBox>
+               </children>
+            </HBox>
+         </top>
+      </BorderPane>
+   </children>
+</AnchorPane>
