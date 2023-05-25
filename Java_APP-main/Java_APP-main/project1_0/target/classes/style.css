@@ -1,0 +1,22 @@
+
+.buttons {
+    -fx-padding: 12px 18px;
+    -fx-font-size: 16px;
+    -fx-font-weight: 600;
+    -fx-border-radius: 8px;
+    -fx-cursor: pointer;
+    -fx-transition: 0.3s;
+    -fx-background-color: #3450E7;
+    -fx-color: #ffffff;
+    -fx-border: none;
+}
+.buttonsinfo {
+    -fx-padding: 12px 18px;
+    -fx-font-size: 18px;
+    -fx-font-weight: 600;
+    -fx-border-radius: 8px;
+    -fx-cursor: pointer;
+    -fx-transition: 0.3s;
+    -fx-background-color: #ffffff;
+    -fx-color: #3450E7;
+}
