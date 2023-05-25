@@ -15,6 +15,7 @@ import java.util.ArrayList;
 
 public class SceneLoader {
     private File mdlFile;
+    private File tempFile;
     private FileWriter writer;
     private DocumentBuilderFactory dbFactory;
     private DocumentBuilder Builder;
@@ -23,6 +24,7 @@ public class SceneLoader {
     private Parent root;
 
     private ArrayList<Block> BlocksArray;
+    private ArrayList<Line> LinesArray;
     private NodeList Blocks;
     private NodeList Lines;
 
@@ -32,6 +34,7 @@ public class SceneLoader {
 
     public SceneLoader(String filename, Parent root) {
         this.BlocksArray = new ArrayList<Block>();
+        this.LinesArray = new ArrayList<Line>();
         this.root = root;
 
         try {
@@ -60,7 +63,7 @@ public class SceneLoader {
 
     public void parseFile() {
         try {
-            File tempFile = new File(this.filename + ".temp");
+            this.tempFile = new File(this.filename + ".temp");
             this.dbFactory = DocumentBuilderFactory.newInstance();
             this.Builder = dbFactory.newDocumentBuilder();
             this.ParsedXML = Builder.parse(tempFile);
@@ -68,18 +71,32 @@ public class SceneLoader {
             this.Blocks = this.ParsedXML.getElementsByTagName("Block");
             this.Lines = this.ParsedXML.getElementsByTagName("Line");
 
-            for (int temp = 0; temp < this.Blocks.getLength(); temp++) {
-                Element currentBlock = (Element)this.Blocks.item(temp);
+            for (int i = 0; i < this.Blocks.getLength(); i++) {
+                Element currentBlock = (Element)this.Blocks.item(i);
                 NodeList properties = currentBlock.getElementsByTagName("P");
 
-                Block block = new Block(properties, currentBlock.getAttribute("Name"));
-                BlocksArray.add(block);
+                int id = Integer.parseInt(currentBlock.getAttribute("SID"));
+
+                Block block = new Block(properties, currentBlock.getAttribute("Name"), id);
+                this.BlocksArray.add(block);
+            }
+
+            for (int i = 0; i < this.Lines.getLength(); i++) {
+                Element readLine = (Element)this.Lines.item(i);
+                NodeList properties = readLine.getElementsByTagName("P");
+
+                Line line = new Line(properties);
+                this.LinesArray.add(line);
             }
 
         } catch (Exception e) {
             e.printStackTrace();
         }
 
+    }
+
+    public void close() {
+        this.tempFile.delete();
     }
 
     public void drawScene() {
