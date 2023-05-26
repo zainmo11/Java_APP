@@ -18,10 +18,13 @@ public class Block {
 
     private int posX;
     private int posY;
-    private int width;
-    private int height;
+
+    private double width;
+    private double height;
 
     private int ID;
+
+    public int destinationCount = 0;
 
     public Block(NodeList properties, String name, int ID) {
         this.name = name;
@@ -43,12 +46,14 @@ public class Block {
         this.nameText.setY(newY + this.height * 0.8);
 
         double textWidth = this.nameText.getLayoutBounds().getWidth();
+        this.width = textWidth + 20;
+        this.height = this.height * 1.4;
 
-        this.block = new Rectangle(newX, newY, textWidth + 20, this.height * 1.4);
+        this.block = new Rectangle(newX, newY, this.width, this.height);
         this.block.setStroke(Color.BLACK);
-        this.block.setFill(Color.TRANSPARENT);
+        this.block.setFill(Color.WHITE);
 
-        System.out.println("Block name: " + this.name + ", x:" + this.posX + ", Block y: " + this.posY + ", Width: " + this.width + ", Height: " + this.height + ", ID: " + this.ID);
+        System.out.println("Block name: " + this.name + ", x:" + this.getX() + ", Block y: " + this.getY() + ", Width: " + this.width + ", Height: " + this.height + ", ID: " + this.ID);
 
     }
 
@@ -57,6 +62,11 @@ public class Block {
 
         ((AnchorPane)root).getChildren().add(this.block);
         ((AnchorPane)root).getChildren().add(this.nameText);
+    }
+
+    public void renderFront() {
+        this.block.toFront();
+        this.nameText.toFront();
     }
 
     public int getID() {
@@ -70,6 +80,8 @@ public class Block {
         return (this.posY + SimulinkApplication.HEIGHT * .1);
     }
 
+    public double getWidth() { return width; }
+    public double getHeight() { return height; }
     private void extractData(String data) {
         this.data = data.replaceAll("[^\\d,-]", "");
         String[] cleanData = this.data.split(",");
