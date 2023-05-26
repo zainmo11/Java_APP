@@ -85,8 +85,8 @@ public class SceneLoader {
                 Element readLine = (Element)this.Lines.item(i);
                 NodeList properties = readLine.getElementsByTagName("P");
 
-                Line line = new Line(properties);
-                this.LinesArray.add(line);
+                //Line line = new Line(properties);
+                //this.LinesArray.add(line);
             }
 
         } catch (Exception e) {

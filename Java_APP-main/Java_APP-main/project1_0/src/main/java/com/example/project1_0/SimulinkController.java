@@ -22,7 +22,9 @@ public class SimulinkController {
     private AnchorPane Anchorid;
     @FXML
     private Button importt;
-    public static File selectedDirectory;
+    public static String filePath;
+    public static SceneLoader loader;
+    public static boolean fileSelected = false;
     public void handelbutton(ActionEvent event) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("MDL Files", "*.mdl"));
@@ -31,7 +33,15 @@ public class SimulinkController {
 
         if (selectedFile != null) {
             File[] files = selectedFile.listFiles((dir, name) -> name.toLowerCase().endsWith(".mdl"));
-            this.selectedDirectory = selectedFile;
+            filePath = selectedFile.getPath();
+            fileSelected = true;
+            String path = SimulinkController.filePath;
+            loader = new SceneLoader(path, SimulinkApplication.root);
+
+            loader.parseFile();
+            loader.drawScene();
+
+
         }
     }
 

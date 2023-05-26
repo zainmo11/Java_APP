@@ -24,7 +24,7 @@ public class SceneLoader {
     private Parent root;
 
     private ArrayList<Block> BlocksArray;
-    private ArrayList<Line> LinesArray;
+    private ArrayList<ConnectorLine> LinesArray;
     private NodeList Blocks;
     private NodeList Lines;
 
@@ -34,7 +34,7 @@ public class SceneLoader {
 
     public SceneLoader(String filename, Parent root) {
         this.BlocksArray = new ArrayList<Block>();
-        this.LinesArray = new ArrayList<Line>();
+        this.LinesArray = new ArrayList<ConnectorLine>();
         this.root = root;
 
         try {
@@ -85,9 +85,10 @@ public class SceneLoader {
                 Element readLine = (Element)this.Lines.item(i);
                 NodeList properties = readLine.getElementsByTagName("P");
 
-              //  Line line = new Line(properties);
-               // this.LinesArray.add(line);
+                ConnectorLine line = new ConnectorLine(properties, this.BlocksArray);
+                this.LinesArray.add(line);
             }
+
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -100,7 +101,13 @@ public class SceneLoader {
     }
 
     public void drawScene() {
-        for (Block block : BlocksArray)
+        for (Block block : this.BlocksArray)
             block.drawBlock(this.root);
+
+        for (ConnectorLine line : this.LinesArray)
+            line.drawLine(this.root);
+
+        for (Block block : this.BlocksArray)
+            block.renderFront();
     }
 }
