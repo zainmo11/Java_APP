@@ -16,7 +16,9 @@ import java.util.ArrayList;
 public class SceneLoader {
     private File mdlFile;
     private File tempFile;
+
     private FileWriter writer;
+
     private DocumentBuilderFactory dbFactory;
     private DocumentBuilder Builder;
     private Document ParsedXML;
@@ -25,6 +27,7 @@ public class SceneLoader {
 
     private ArrayList<Block> BlocksArray;
     private ArrayList<ConnectorLine> LinesArray;
+
     private NodeList Blocks;
     private NodeList Lines;
 
@@ -107,7 +110,7 @@ public class SceneLoader {
         for (ConnectorLine line : this.LinesArray)
             line.drawLine(this.root);
 
-        for (Block block : this.BlocksArray)
-            block.renderFront();
+        //for (Block block : this.BlocksArray)
+         //   block.renderFront();
     }
 }

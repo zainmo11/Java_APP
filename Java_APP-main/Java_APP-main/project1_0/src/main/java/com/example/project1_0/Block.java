@@ -8,7 +8,12 @@ import javafx.scene.text.Text;
 
 import org.w3c.dom.*;
 
+import java.util.ArrayList;
+
 public class Block {
+
+    private static ArrayList<Block> CreatedBlocks = new ArrayList<Block>();
+
     private Rectangle block;
 
     private String data;
@@ -16,15 +21,16 @@ public class Block {
 
     private Text nameText;
 
+    private Port input;
+
     private int posX;
     private int posY;
+    private int inputs = 1;
 
     private double width;
     private double height;
 
     private int ID;
-
-    public int destinationCount = 0;
 
     public Block(NodeList properties, String name, int ID) {
         this.name = name;
@@ -35,6 +41,13 @@ public class Block {
             if (currentElement.getAttribute("Name").equals("Position")) {
                 this.extractData(currentElement.getTextContent());
             }
+
+            if (currentElement.getAttribute("Name").equals("Ports")) {
+                String portsData = currentElement.getTextContent().replaceAll("[^\\d,-]", "");
+
+                this.inputs = portsData.charAt(0) - 48;
+            }
+
 
         }
 
@@ -53,6 +66,10 @@ public class Block {
         this.block.setStroke(Color.BLACK);
         this.block.setFill(Color.WHITE);
 
+        Block.CreatedBlocks.add(this);
+
+        input = new Port(this.inputs, this);
+
         System.out.println("Block name: " + this.name + ", x:" + this.getX() + ", Block y: " + this.getY() + ", Width: " + this.width + ", Height: " + this.height + ", ID: " + this.ID);
 
     }
@@ -62,11 +79,16 @@ public class Block {
 
         ((AnchorPane)root).getChildren().add(this.block);
         ((AnchorPane)root).getChildren().add(this.nameText);
+        input.drawPort(root);
     }
 
     public void renderFront() {
         this.block.toFront();
         this.nameText.toFront();
+    }
+
+    public double getConnectorPosY() {
+        return input.getFreeConnector().getCenterY();
     }
 
     public int getID() {
@@ -82,6 +104,7 @@ public class Block {
 
     public double getWidth() { return width; }
     public double getHeight() { return height; }
+
     private void extractData(String data) {
         this.data = data.replaceAll("[^\\d,-]", "");
         String[] cleanData = this.data.split(",");
@@ -91,5 +114,14 @@ public class Block {
 
         this.width = Integer.parseInt(cleanData[2]) -  Integer.parseInt(cleanData[0]);
         this.height = Integer.parseInt(cleanData[3]) -  Integer.parseInt(cleanData[1]);
+    }
+
+    public static Block getBlockByID(int ID) {
+        for (Block block : CreatedBlocks) {
+            if (block.getID() == ID)
+                return block;
+        }
+
+        return null;
     }
 }

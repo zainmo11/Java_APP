@@ -22,9 +22,11 @@ public class SimulinkController {
     private AnchorPane Anchorid;
     @FXML
     private Button importt;
+
     public static String filePath;
     public static SceneLoader loader;
     public static boolean fileSelected = false;
+
     public void handelbutton(ActionEvent event) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("MDL Files", "*.mdl"));
