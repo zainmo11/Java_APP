@@ -47,7 +47,7 @@ The Simulink MDL File Viewer has the following dependencies:
 
 ## Preview
 
-![](https://github.com/abdlrhman08/MDL-File_Viewer/blob/main/preview/preview.png?raw=true)
+![](https://github.com/abdlrhman08/MDL-File-Viewer/blob/main/preview/preview.png?raw=true)
 
 
 ## Contributors
