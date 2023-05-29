@@ -12,9 +12,13 @@ The Simulink MDL File Viewer offers the following features:
 
 1. **Loading and Parsing**: The tool allows users to load Simulink MDL files and parses them to extract the model information.
 
-2. **Hierarchical Model Structure**: The GUI presents the model components in a hierarchical structure, providing an organized view of the model's subsystems, blocks, and their relationships.
+2. **Connection Visualization**: The tool visualizes the connections between blocks, making it easier for users to understand the flow of data within the model.
 
-3. **Connection Visualization**: The tool visualizes the connections between blocks, making it easier for users to understand the flow of data within the model.
+### Features in devel`opment
+
+1. File modification using our GUI
+
+2. Add block functionality
 
 ## Usage
 
@@ -24,7 +28,7 @@ To use the Simulink MDL File Viewer, follow these steps:
 
 2. Click on the "Import" button to select and load a Simulink MDL file.
 
-3. Once the file is loaded, the GUI will display the hierarchical structure of the model.
+3. Once the file is loaded, the GUI will display the structure of the model.
 
 ## Development
 
@@ -40,6 +44,11 @@ The Simulink MDL File Viewer has the following dependencies:
 
 - Java Development Kit (JDK) version 8 or later.
 - JavaFX library.
+
+## Preview
+
+![](https://github.com/abdlrhman08/MDL-File_Viewer/blob/main/preview/preview.png?raw=true)
+
 
 ## Contributors
 

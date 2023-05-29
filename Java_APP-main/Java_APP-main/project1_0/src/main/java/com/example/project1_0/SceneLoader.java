@@ -110,7 +110,7 @@ public class SceneLoader {
         for (ConnectorLine line : this.LinesArray)
             line.drawLine(this.root);
 
-        //for (Block block : this.BlocksArray)
-         //   block.renderFront();
+        for (Block block : this.BlocksArray)
+            block.renderFront();
     }
 }
