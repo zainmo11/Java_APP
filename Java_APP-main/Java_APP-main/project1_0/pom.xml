@@ -10,6 +10,7 @@
     <name>project1_0</name>
 
     <properties>
+        <java.version>20</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <junit.version>5.9.1</junit.version>
     </properties>

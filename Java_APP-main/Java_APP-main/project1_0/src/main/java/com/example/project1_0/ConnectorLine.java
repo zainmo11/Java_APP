@@ -51,13 +51,35 @@ public class ConnectorLine {
             double space = sourceHeight / (1 + this.destinationBlocks.size());
 
             double lineStartX = startX + sourceWidth;
-            double lineStartY = startY + space * (i + 1);
+            double lineStartY = startY + sourceHeight / 2;
             System.out.println("Line X; " + lineStartX + "Line Y: " + lineStartY);
 
             Block destBLock = this.destinationBlocks.get(i);
 
-            Line line = new Line(lineStartX, lineStartY, destBLock.getX(), destBLock.getConnectorPosY());
+            double xDistance = destBLock.getX() - lineStartX;
+            double firstLineDestX = lineStartX + (xDistance * 2/3);
+
+            double destBlockY = destBLock.getConnectorPosY();
+
+            //First line horizontal
+            Line line = new Line(lineStartX, lineStartY, firstLineDestX, lineStartY);
             this.LinesArray.add(line);
+
+            if (this.startY != destBLock.getY()) {
+
+                //Second line vertical
+                line = new Line(firstLineDestX, lineStartY, firstLineDestX, destBlockY);
+                this.LinesArray.add(line);
+
+                //Third line vertical
+                line = new Line(firstLineDestX, destBlockY, destBLock.getX(), destBlockY);
+                this.LinesArray.add(line);
+            } else {
+
+                line = new Line(firstLineDestX, lineStartY, destBLock.getX(), destBlockY);
+                this.LinesArray.add(line);
+            }
+
         }
     }
 
